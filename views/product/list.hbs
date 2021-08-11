@@ -1,0 +1,50 @@
+<h3><a class="btn btn-secondary" href="/product"><i class="fa fa-plus"></i> Create New</a> Product List</h3>
+<h3><a class="btn btn-secondary" href="/category/ca/list">  Category List</a></h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Category </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {{#each products}}
+        <tr>
+            <td>{{this.productId}}</td>
+            <td>{{this.productName}}</td>
+            <td>{{this.categoryId}}</td>
+            
+            <td>
+                <a href="/product/{{this._id}}"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                <a href="/product/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+        {{/each}}
+         
+    </tbody>
+</table>
+{{#ifCond pages '>' 0}}
+        
+    <ul class="pagination text-center">
+        {{#ifCond current '==' 1}}
+            <li class="disabled"><a>First</a></li>
+        {{else}}
+            <li><a href="/product/list/1">First</a></li>
+        {{/ifCond }}
+
+                    
+        {{#for 2 pages 1}}
+            <li><a href="/product/list/{{this}}"> &nbsp;{{ this }}&nbsp; </a></li>
+        {{/for}}
+                    
+        {{#ifCond current '==' pages}}
+            <li class="disabled"><a>Last</a></li>
+        {{else}}
+            <li><a href="/product/list/{{ pages }}">Last</a></li>
+        {{/ifCond}}
+    </ul> 
+
+{{/ifCond}} 

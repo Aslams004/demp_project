@@ -1,0 +1,53 @@
+<h3><a class="btn btn-secondary" href="/category"><i class="fa fa-plus"></i> Create New</a> Category List</h3>
+<h3><a class="btn btn-secondary" href="/product/list/1">  Product List</a></h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Category Id</th>
+            <th>Category Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each products}}
+        <tr>
+            <td>{{this.categoryId}}</td>
+            <td>{{this.categoryName}}</td>
+            <td>
+                <a href="/category/{{this._id}}"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                <a href="/category/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+        {{/each}}
+        {{!-- {{pages}}
+        {{#gt pages 0}}
+        
+                <ul class="pagination text-center">
+                    {{#eq current  1}}
+                        <li class="disabled"><a>First</a></li>
+                    {{#else}}
+                        <li><a href="/products/1">First</a></li>
+                    {{#eq }}
+                    {{ var i = (Number(current) > 5 ? Number(current) - 4 : 1) }}
+                    {{ if (i !== 1) { }}
+                        <li class="disabled"><a>...</a></li>
+                    {{ } }}
+                    {{ for (; i <= (Number(current) + 4) && i <= pages; i++) { }}
+                        {{ if (i == current) { }}
+                            <li class="active"><a>{{= i }}</a></li>
+                        {{ } else { }}
+                            <li><a href="/products/{{= i }}">{{= i }}</a></li>
+                        {{ } }}
+                        {{ if (i == Number(current) + 4 && i < pages) { }}
+                            <li class="disabled"><a>...</a></li>
+                        {{ } }}
+                    {{ } }}>
+                    {{#eq current pages}}
+                        <li class="disabled"><a>Last</a></li>
+                    {{#else}}
+                        <li><a href="/products/{{ pages }}">Last</a></li>
+                    {{#eq}}
+                </ul> 
+             {{/if}}  --}}
+    </tbody>
+</table>
